@@ -6,14 +6,14 @@
 char* toLower(char * seasonText){
    for(int i = 0; i <= strlen(seasonText); i++){
       if(seasonText[i] >= 65 && seasonText[i] <= 90)            //if character in string is a capital letter, set it to the lowercase equivalent
-         seasonText[i] = seasonText[i]+32;
+         seasonText[i] = seasonText[i]+32;                      //by adding 32 to the char value
    }
    return seasonText;
 }
 
 int main(void){
     int holidayDays = 0;
-
+    //ask users how many days they are going on holiday for
     printf("How many days are you going on holiday for? ");
     scanf("%d",&holidayDays);
 
@@ -29,10 +29,8 @@ int main(void){
 
     }
     char * seasonLower = toLower(seasonInput);
-    //printf("%s\n",seasonLower);
-
+   
     //Clothing calculations section
-
     //declare all clothing number variables
     int clothNumLength = 6;
     char * clothingTypes[6] = {"Underwear","Pairs of socks","T-shirts","Jumpers/Sweaters","Pants","Shorts"};
@@ -81,6 +79,6 @@ int main(void){
     for(int i = 0; i < clothNumLength; i++){
         printf("%s: %d\n",clothingTypes[i],clothingNum[i]);
     }
-    system("pause");
+    system("pause");    //keep command window open while the user is looking at printed output
     return 0;
 }
