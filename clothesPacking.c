@@ -4,16 +4,18 @@
 #include <math.h>
 
 char* toLower(char * seasonText){
-   for(int i = 0; i <= strlen(seasonText); i++){
-      if(seasonText[i] >= 65 && seasonText[i] <= 90)            //if character in string is a capital letter, set it to the lowercase equivalent
-         seasonText[i] = seasonText[i]+32;                      //by adding 32 to the char value
+   char * text2BeLowered = malloc(sizeof(char)*strlen(seasonText));
+   strcpy(text2BeLowered,seasonText);
+   for(int i = 0; i <= strlen(text2BeLowered); i++){
+      if(text2BeLowered[i] >= 65 && text2BeLowered[i] <= 90)            //if character in string is a capital letter, set it to the lowercase equivalent
+         text2BeLowered[i] = text2BeLowered[i]+32;
    }
    return seasonText;
 }
 
 int main(void){
     int holidayDays = 0;
-    //ask users how many days they are going on holiday for
+
     printf("How many days are you going on holiday for? ");
     scanf("%d",&holidayDays);
 
@@ -23,14 +25,14 @@ int main(void){
     printf("Consider the season the holiday takes place in as the one with most holiday days occuring within it.\n");
     scanf("%6s",seasonInput);
     //to check that first letter of season given is capitalised 
-    if(seasonInput[0] >= 97 && seasonInput[0] <= 122){
-        seasonInput[0] = seasonInput[0]-32;
-    }else{
-
+    char char2Change = seasonInput[0];
+    if(char2Change >= 97 && char2Change <= 122){
+        seasonInput[0] = (char)char2Change - 32;
     }
     char * seasonLower = toLower(seasonInput);
-   
+
     //Clothing calculations section
+
     //declare all clothing number variables
     int clothNumLength = 6;
     char * clothingTypes[6] = {"Underwear","Pairs of socks","T-shirts","Jumpers/Sweaters","Pants","Shorts"};
@@ -73,12 +75,11 @@ int main(void){
         clothingNum[5] = everyFourthDay;     //based on personal preference -- I prefer wearing pants 9/10 times
         clothingNum[4] = everySecondDay;
     }
-    free(seasonLower);
     //print results
     printf("The recommended number of clothing for a trip of %d days during %s is:\n",holidayDays,seasonInput);
     for(int i = 0; i < clothNumLength; i++){
         printf("%s: %d\n",clothingTypes[i],clothingNum[i]);
     }
-    system("pause");    //keep command window open while the user is looking at printed output
+    system("pause");
     return 0;
 }
