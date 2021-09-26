@@ -76,8 +76,8 @@ int main(void){
 
     //declare all clothing number variables
     int clothNumLength = 6;
-    char * clothingTypes[6] = {"Underwear","Pairs of socks","T-shirts","Jumpers/Sweaters","Pants","Shorts","Masks"};
-    int clothingNum[6] = {0,0,0,0,0,0,0};
+    char * clothingTypes[7] = {"Underwear","Pairs of socks","T-shirts","Jumpers/Sweaters","Pants","Shorts","Masks"};
+    int clothingNum[7] = {0,0,0,0,0,0,0};
 
     //1st num -- socks = 0;
     //2nd num -- underwear = 0;
