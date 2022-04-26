@@ -118,12 +118,28 @@ int main(void){
         clothingNum[4] = everySecondDay;
     }
 
-    //print results
+    //print results in window
     char * seasonNames[4] = {"Winter","Autumn","Spring","Summer"};
     printf("The recommended number of clothing for a trip of %d days during %s is:\n",holidayDays,seasonNames[seasonIndicator]);
     for(int i = 0; i < clothNumLength; i++){
         printf("%s: %d\n",clothingTypes[i],clothingNum[i]);
     }
+	
+	//ask if the user wants the output printed to .txt file
+	char textFileAnswer[2];
+	printf("Would you like this list printed to a text file? (y/n) ");
+	scanf("%1s", textFileAnswer);
+	if(textFileAnswer[0] == 'y')
+	{		
+		FILE * fp;
+		fp = fopen("Clothing_List.txt", "w");
+		fprintf(fp,"The recommended number of clothing for a trip of %d days during %s is:\n",holidayDays,seasonNames[seasonIndicator]);
+		for(int i = 0; i < clothNumLength; i++){
+			fprintf(fp,"%s: %d\n", clothingTypes[i], clothingNum[i]);
+		}
+		fclose(fp);
+		printf("File written successfully!\n");
+	}
     system("pause");
     return 0;
 }
